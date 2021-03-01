@@ -62,7 +62,7 @@ RowVector2f  RV2 = (RowVector2f()<< 1,2 ).finished();
 // Other nicer ways to initialize a matrix are
 Eigen::Matrix < double, 4,4, RowMajor > A_zero = Eigen::MatrixXd::Zero(4,4);
 Matrix4d A_identity = MatrixXd::Identity(4,4);
-Matrix4d A_setone = MatrixXd::Ones(4,4);
+Matrix4d A_setone = MatrixXd::Ones(4,4); // the r value is basically eye(4,4)
 
 //reinitialize an existing Matrix
 Matrix1.setZero();
@@ -70,7 +70,7 @@ Matrix1.setZero();
 Matrix1.setOnes();
 Matrix1.setRandom();
 //std::cout << "Matrix1 is reset to Random \n" << Matrix1 << std::endl;
-
+Matrix1.setIdentity(); // Matrix1 = eye(N);
 
 // Lengths of different tensors.
 
@@ -101,6 +101,40 @@ std::cout << Matrix2 << std::endl;
 Matrix2.block<2,2>(1, 1)  << 1.2, 1.3, 1.4, 1.5 ; // This is an interesting operation, it extracts the specific block and assigns value to it
 // for example here we would like to extract a block of 2 rows and 2 columns as descrbed inside <> . And the numbers inside braces indicate the starting col and starting row
 // here it's 1,1 which means 2,2 as the value is taken 1 less than actual value of rol or col
+//std::cout << Matrix2 << std::endl;
+
+
+
+// Resizing an existing matrix, matrix1 is 4x4. This can resized to 2x8, 8x2, 1x16 and 16x1
+//Matrix1.resize(2,8); // This normally fails due to assertations, i wouldn't wanna tamper with assertations at this stage
+//std::cout << Matrix1  << std::endl;
+
+
+// Stacking Vectors or Matrices
+Matrix1.setRandom();
+MatrixXd M( Matrix1.rows() + Matrix1.rows()+ Matrix1.rows(), Matrix1.cols()); // I could have written Matrix1.rows()*3, in case there were m << A,B,C; then we need to write em individually
+M << Matrix1, Matrix1, Matrix1;
+std::cout << M << std::endl;
+
+
+// Filling all the elements with some constant value
+
+Matrix2.fill(1.0);
+std::cout << Matrix2 << std::endl;
+
+
+VectorXd VX = VectorXd::LinSpaced(4,1,5) ;       // linspace(low,high,size)'
+VX.setLinSpaced(4,1,5);               // v = linspace(low,high,size)'
+std::cout << VX << std::endl;
+
+// Matrix slicing
+// TODO
+
+
+
+
+
+
 
 
 
