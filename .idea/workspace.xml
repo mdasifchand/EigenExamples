@@ -66,21 +66,17 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="filter" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="filter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="filter">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -94,7 +90,9 @@
       <updated>1614554820066</updated>
       <workItem from="1614554821781" duration="841000" />
       <workItem from="1614555904068" duration="43000" />
-      <workItem from="1614555952233" duration="4883000" />
+      <workItem from="1614555952233" duration="6120000" />
+      <workItem from="1614817512787" duration="62000" />
+      <workItem from="1614884153643" duration="3230000" />
     </task>
     <servers />
   </component>
@@ -113,6 +111,9 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="451" y="210" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614555927172">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -122,42 +123,54 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1614555958084" />
-    <state width="1807" height="344" key="GridCell.Tab.0.bottom" timestamp="1614560769705">
+    <state width="1807" height="277" key="GridCell.Tab.0.bottom" timestamp="1614890081579">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769705" />
-    <state width="1807" height="344" key="GridCell.Tab.0.center" timestamp="1614560769704">
+    <state width="1807" height="277" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614890081579" />
+    <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870786" />
+    <state width="1807" height="277" key="GridCell.Tab.0.center" timestamp="1614890081579">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769704" />
-    <state width="1807" height="344" key="GridCell.Tab.0.left" timestamp="1614560769704">
+    <state width="1807" height="277" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614890081579" />
+    <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870786" />
+    <state width="1807" height="277" key="GridCell.Tab.0.left" timestamp="1614890081579">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769704" />
-    <state width="1807" height="344" key="GridCell.Tab.0.right" timestamp="1614560769704">
+    <state width="1807" height="277" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614890081579" />
+    <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870785" />
+    <state width="1807" height="277" key="GridCell.Tab.0.right" timestamp="1614890081579">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769704" />
-    <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1614560769624">
+    <state width="1807" height="277" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614890081579" />
+    <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870786" />
+    <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1614560870707">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769624" />
-    <state width="1807" height="344" key="GridCell.Tab.1.center" timestamp="1614560769623">
+    <state width="1807" height="344" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870707" />
+    <state width="1807" height="344" key="GridCell.Tab.1.center" timestamp="1614560870707">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769623" />
-    <state width="1807" height="344" key="GridCell.Tab.1.left" timestamp="1614560769623">
+    <state width="1807" height="344" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870707" />
+    <state width="1807" height="344" key="GridCell.Tab.1.left" timestamp="1614560870706">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769623" />
-    <state width="1807" height="344" key="GridCell.Tab.1.right" timestamp="1614560769623">
+    <state width="1807" height="344" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870706" />
+    <state width="1807" height="344" key="GridCell.Tab.1.right" timestamp="1614560870707">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="344" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614560769623" />
+    <state width="1807" height="344" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1614560870707" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1614889173052">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614889173052" />
     <state x="703" y="213" width="570" height="679" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1614555478770">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="703" y="213" width="570" height="679" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1614555478770" />
+    <state x="735" y="428" width="626" height="279" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1614889167804">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="735" y="428" width="626" height="279" key="org.intellij.images.editor.actions.BackgroundImageDialog/67.27.1853.1053/1920.0.2560.1440@67.27.1853.1053" timestamp="1614889167804" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1614558865044">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
