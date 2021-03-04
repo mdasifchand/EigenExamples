@@ -128,16 +128,143 @@ VX.setLinSpaced(4,1,5);               // v = linspace(low,high,size)'
 std::cout << VX << std::endl;
 
 // Matrix slicing
-// TODO
+// blocks -> always go for templated version, it has better speed up
+// there are two types of blocks one with vectors and second one with Matrix
+
+// for vectors, you simply pass on a single value
+int const n = 2;
+VX.head<n>() << 1, 2; // for head initial 2 values
+std::cout << VX << std::endl;
+VX.tail<n>() << 3,4; // bottom two values or N-n till N
+
+// for matrix there is a block actually, you essentially pass on initial inidices of starting with size of the matrix as shown in line 101
+// Other try outs
+/*
+    P.col(j)                           // P(:, j+1)
+    P.leftCols<cols>()                 // P(:, 1:cols)
+    P.leftCols(cols)                   // P(:, 1:cols)
+    P.middleCols<cols>(j)              // P(:, j+1:j+cols)
+    P.middleCols(j, cols)              // P(:, j+1:j+cols)
+    P.rightCols<cols>()                // P(:, end-cols+1:end)
+    P.rightCols(cols)                  // P(:, end-cols+1:end)
+    P.topRows<rows>()                  // P(1:rows, :)
+    P.topRows(rows)                    // P(1:rows, :)
+    P.middleRows<rows>(i)              // P(i+1:i+rows, :)
+    P.middleRows(i, rows)              // P(i+1:i+rows, :)
+    P.bottomRows<rows>()               // P(end-rows+1:end, :)
+    P.bottomRows(rows)                 // P(end-rows+1:end, :)
+    P.topLeftCorner(rows, cols)        // P(1:rows, 1:cols)
+    P.topRightCorner(rows, cols)       // P(1:rows, end-cols+1:end)
+    P.bottomLeftCorner(rows, cols)     // P(end-rows+1:end, 1:cols)
+    P.bottomRightCorner(rows, cols)    // P(end-rows+1:end, end-cols+1:end)
+    P.topLeftCorner<rows,cols>()       // P(1:rows, 1:cols)
+    P.topRightCorner<rows,cols>()      // P(1:rows, end-cols+1:end)
+    P.bottomLeftCorner<rows,cols>()    // P(end-rows+1:end, 1:cols)
+    P.bottomRightCorner<rows,cols>()   // P(end-rows+1:end, end-cols+1:end)
+*/
+
+// Views, transpose, etc;
+// Eigen                           // Matlab
+ /*    R.adjoint()                        // R'
+    R.transpose()                      // R.' or conj(R')       // Read-write
+    R.diagonal()                       // diag(R)               // Read-write
+    x.asDiagonal()                     // diag(x)
+    R.transpose().colwise().reverse()  // rot90(R)              // Read-write
+    R.rowwise().reverse()              // fliplr(R)
+    R.colwise().reverse()              // flipud(R)
+    R.replicate(i,j)                   // repmat(P,i,j)
+*/
 
 
+    // All the same as Matlab, but matlab doesn't have *= style operators.
+// Matrix-vector.  Matrix-matrix.   Matrix-scalar.
+  /*
+    y  = M*x;          R  = P*Q;        R  = P*s;
+    a  = b*M;          R  = P - Q;      R  = s*P;
+    a *= M;            R  = P + Q;      R  = P/s;
+    R *= Q;          R  = s*P;
+    R += Q;          R *= s;
+    R -= Q;          R /= s;
 
+   // Vectorized operations on each element independently
+// Eigen                       // Matlab
+R = P.cwiseProduct(Q);         // R = P .* Q
+R = P.array() * s.array();     // R = P .* s
+R = P.cwiseQuotient(Q);        // R = P ./ Q
+R = P.array() / Q.array();     // R = P ./ Q
+R = P.array() + s.array();     // R = P + s
+R = P.array() - s.array();     // R = P - s
+R.array() += s;                // R = R + s
+R.array() -= s;                // R = R - s
+R.array() < Q.array();         // R < Q
+R.array() <= Q.array();        // R <= Q
+R.cwiseInverse();              // 1 ./ P
+R.array().inverse();           // 1 ./ P
+R.array().sin()                // sin(P)
+R.array().cos()                // cos(P)
+R.array().pow(s)               // P .^ s
+R.array().square()             // P .^ 2
+R.array().cube()               // P .^ 3
+R.cwiseSqrt()                  // sqrt(P)
+R.array().sqrt()               // sqrt(P)
+R.array().exp()                // exp(P)
+R.array().log()                // log(P)
+R.cwiseMax(P)                  // max(R, P)
+R.array().max(P.array())       // max(R, P)
+R.cwiseMin(P)                  // min(R, P)
+R.array().min(P.array())       // min(R, P)
+R.cwiseAbs()                   // abs(P)
+R.array().abs()                // abs(P)
+R.cwiseAbs2()                  // abs(P.^2)
+R.array().abs2()               // abs(P.^2)
+(R.array() < s).select(P,Q );  // (R < s ? P : Q)
+R = (Q.array()==0).select(P,A) // R(Q==0) = P(Q==0)
+R = P.unaryExpr(ptr_fun(func)) // R = arrayfun(func, P)   // with: scalar func(const scalar &x
 
+//// Type conversion
+// Eigen                  // Matlab
+A.cast<double>();         // double(A)
+A.cast<float>();          // single(A)
+A.cast<int>();            // int32(A)
+A.real();                 // real(A)
+A.imag();                 // imag(A)
+// if the original type equals destination type, no work is done
 
+// Note that for most operations Eigen requires all operands to have the same type:
+MatrixXf F = MatrixXf::Zero(3,3);
+A += F;                // illegal in Eigen. In Matlab A = A+F is allowed
+A += F.cast<double>(); // F converted to double and then added (generally, conversion happens on-the-fly)
 
+// Eigen can map existing memory into Eigen matrices.
+float array[3];
+Vector3f::Map(array).fill(10);            // create a temporary Map over array and sets entries to 10
+int data[4] = {1, 2, 3, 4};
+Matrix2i mat2x2(data);                    // copies data into mat2x2
+Matrix2i::Map(data) = 2*mat2x2;           // overwrite elements of data with 2*mat2x2
+MatrixXi::Map(data, 2, 2) += mat2x2;      // adds mat2x2 to elements of data (alternative syntax if size is not know at compile time)
 
+// Solve Ax = b. Result stored in x. Matlab: x = A \ b.
+x = A.ldlt().solve(b));  // A sym. p.s.d.    #include <Eigen/Cholesky>
+x = A.llt() .solve(b));  // A sym. p.d.      #include <Eigen/Cholesky>
+x = A.lu()  .solve(b));  // Stable and fast. #include <Eigen/LU>
+x = A.qr()  .solve(b));  // No pivoting.     #include <Eigen/QR>
+x = A.svd() .solve(b));  // Stable, slowest. #include <Eigen/SVD>
+// .ldlt() -> .matrixL() and .matrixD()
+// .llt()  -> .matrixL()
+// .lu()   -> .matrixL() and .matrixU()
+// .qr()   -> .matrixQ() and .matrixR()
+// .svd()  -> .matrixU(), .singularValues(), and .matrixV()
 
+// Eigenvalue problems
+// Eigen                          // Matlab
+A.eigenvalues();                  // eig(A);
+EigenSolver<Matrix3d> eig(A);     // [vec val] = eig(A)
+eig.eigenvalues();                // diag(val)
+eig.eigenvectors();               // vec
+// For self-adjoint matrices use SelfAdjointEigenSolver<>
 
+This was copied from
 
+*/
 
 }
