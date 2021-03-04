@@ -1,3 +1,0 @@
-/home/light/projects/EigenExamples/build/CMakeFiles/rebuild_cache.dir
-/home/light/projects/EigenExamples/build/CMakeFiles/filter.dir
-/home/light/projects/EigenExamples/build/CMakeFiles/edit_cache.dir
